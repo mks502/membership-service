@@ -5,10 +5,11 @@ import com.mks.membershipservice.service.MemberService;
 import com.mks.membershipservice.vo.CreateMemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
@@ -17,9 +18,13 @@ public class MemberController {
     private final MemberService memberService;
     private final ModelMapper mapper;
 
-    @PostMapping("/users")
-    public MemberDto createMember(@RequestBody CreateMemberRequest memberRequest) {
+    @PostMapping("/members")
+    public ResponseEntity createMember(@Valid @RequestBody CreateMemberRequest memberRequest) {
         MemberDto memberDto = mapper.map(memberRequest, MemberDto.class);
-        return memberService.createMember(memberDto);
+        return ResponseEntity.status(HttpStatus.CREATED).body(memberService.createMember(memberDto));
+    }
+    @GetMapping("/members/{memberId}")
+    public ResponseEntity getMembers(@PathVariable Long memberId) {
+        return ResponseEntity.status(HttpStatus.OK).body(memberService.getMemberByMemberId(memberId));
     }
 }
