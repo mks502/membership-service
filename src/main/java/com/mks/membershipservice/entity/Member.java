@@ -17,11 +17,11 @@ public class Member {
     private Long memberId;
 
     @Column(nullable = false, length = 50, unique = true)
-    private String email;
+    private String username;
     @Column(nullable = false, length = 50)
     private String name;
     @Column(nullable = false)
     private String password;
-    @Column(nullable = true)
+    @Column(nullable = false)
     private String encryptedPassword;
 }

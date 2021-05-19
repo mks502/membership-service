@@ -20,3 +20,6 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+token:
+  expiration-time : 3600000
+  secret-key: secretKey
