@@ -1,6 +1,7 @@
 package com.mks.membershipservice.service;
 
 import com.mks.membershipservice.dto.MemberDto;
+import com.mks.membershipservice.exception.BadRequestException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -9,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 @Transactional
@@ -39,6 +41,19 @@ class MemberServiceImplTest {
         assertThat(createMember.getUsername()).isEqualTo(member.getUsername());
         assertThat(createMember.getName()).isEqualTo(member.getName());
         assertThat(createMember).isNotNull();
+    }
+
+    @Test
+    @DisplayName("멤버의 username은 유일해야 한다. 멤버의 username은 중복 될 수 없다.")
+    public void 중복_되는_멤버_등록_불가() throws Exception {
+        MemberDto member = new MemberDto();
+        member.setUsername("hkd@gmail.com");
+        member.setName("홍길동");
+        member.setPassword("12345678");
+
+        assertThatThrownBy(() -> {
+            memberService.createMember(member);
+        }).isInstanceOf(BadRequestException.class);
     }
 
     @Test

@@ -9,4 +9,6 @@ public interface MemberService extends UserDetailsService {
     MemberDto getMemberByMemberId(Long memberId);
 
     MemberDto getMemberByUsername(String username);
+
+    boolean isExistUsername (String username);
 }
