@@ -23,3 +23,14 @@ spring:
 token:
   expiration-time : 3600000
   secret-key: secretKey
+
+jasypt:
+  encryptor:
+    bean: jasyptStringEncryptor
+
+oauth:
+  kakao:
+    rest-api-key : ENC(nJ2zapDuZl2hWWwOL0X/7Z9NGRIbi2ja+LGQeD7rjkqmenvKIBdeoUMtw4bAjOOS)
+    redirect-url : ENC(EA4SxFO3/bGW5FHQMSXflASYduRA5wfVlaG1eu4nAz27VXNoGgup1Q7rOawlUrXF)
+    kakao-auth-url : https://kauth.kakao.com
+    password : ENC(rv8Qph3VurYZgBfvLo33SUPPosUgUzub)
