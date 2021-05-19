@@ -2,21 +2,17 @@ package com.mks.membershipservice.service;
 
 import com.mks.membershipservice.dto.MemberDto;
 import com.mks.membershipservice.entity.Member;
-import com.mks.membershipservice.exception.BadRequestException;
 import com.mks.membershipservice.exception.NotFoundException;
 import com.mks.membershipservice.repository.MemberRepository;
-import com.mks.membershipservice.security.JwtTokenProvider;
-import com.mks.membershipservice.vo.ResponseLogin;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 
@@ -36,6 +32,7 @@ public class MemberServiceImpl implements MemberService{
                 true,true,true,true,new ArrayList<>());
     }
 
+    @Transactional
     @Override
     public MemberDto createMember(MemberDto memberDto) {
         Member member = mapper.map(memberDto, Member.class);

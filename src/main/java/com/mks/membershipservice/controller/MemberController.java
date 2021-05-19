@@ -1,7 +1,9 @@
 package com.mks.membershipservice.controller;
 
+import com.mks.membershipservice.adapter.KakaoAdapter;
 import com.mks.membershipservice.dto.MemberDto;
 import com.mks.membershipservice.service.MemberService;
+import com.mks.membershipservice.oauth.OauthService;
 import com.mks.membershipservice.vo.CreateMemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;

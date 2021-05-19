@@ -10,7 +10,7 @@ import javax.validation.constraints.Size;
 public class RequestLogin {
     @NotNull(message = "Email cannot be null")
     @Size(min = 2, message = "Email min size 2")
-    @Email
+    @Email(message = "invalid email")
     private String username;
 
     @NotNull(message = "Password cannot be null")
