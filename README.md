@@ -1,5 +1,7 @@
 # membership-service
 
+MSA 적용 전
+
 요구 사항
 
 - [X]   이메일 회원가입
