@@ -20,6 +20,7 @@ Spring Security + JWT 활용 (+ OAuth2.0)
 개발 환경 - H2 DB , Redis
 운영 환경 - AWS-RDS (mySQL) , Redis
 
+
 ### API
 
 | Uri                                |accessToken (JWT 토큰) | Request Body                          |Http Method | description                |
@@ -35,6 +36,9 @@ Spring Security + JWT 활용 (+ OAuth2.0)
 | ------------------------------------ | -------------------------- |
 | /oauth/login/kakao                    |카카오 로그인 시 처리해주는 핸들러 , 카카오 로그인을 통해 자동 회원가입 or 로그인이 된다. 성공시 accessToken 발급 |
 
+### membership-service의 Swgger (API gateway를 통해서 연결)
+
+http://ec2-54-180-154-7.ap-northeast-2.compute.amazonaws.com:8000/membership-service/swagger-ui.html#
 
 ### 서비스 Architecture
 
