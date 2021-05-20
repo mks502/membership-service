@@ -38,7 +38,7 @@ Spring Security + JWT 활용 (+ OAuth2.0)
 
 ### 서비스 Architecture
 
-![architecture](../../../../images/architecture.png)
+![architecture](./images/architecture.png)
 
 서비스의 보안을 위한 Spring Security + JWT (+ 소셜 서비스를 위한 OAuth2.0) 적용
 
