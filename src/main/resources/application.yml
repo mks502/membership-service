@@ -3,7 +3,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: prod
   config:
     use-legacy-processing: true
   application:
@@ -63,5 +63,5 @@ spring:
   profiles: prod
   datasource:
     url: jdbc:mysql://database-kyuseok.cp43k9flv4ax.ap-northeast-2.rds.amazonaws.com/membership?useUnicode=true&characterEncoding=utf8
-    username: root
-    password: rbtjrelql
+    username: ENC(E6qfrqxgTgnbL+fb4JfPEg==)
+    password: ENC(+mBsJs8hgJL3omVzvToImV300v7YL+S0)
