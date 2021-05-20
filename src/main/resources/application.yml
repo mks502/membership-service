@@ -20,9 +20,16 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: create-drop
+  cache:
+    type: redis
+  redis:
+    host: localhost
+    port: 6379
+
 token:
   expiration-time : 3600000
-  secret-key: secretKey
+  secret-key: ENC(zehmic1AsPolW19uG2XQ7Jgaa0Z1kUHZ)
+  logout-token-expiration-time : 3600
 
 jasypt:
   encryptor:
@@ -34,3 +41,4 @@ oauth:
     redirect-url : ENC(EA4SxFO3/bGW5FHQMSXflASYduRA5wfVlaG1eu4nAz27VXNoGgup1Q7rOawlUrXF)
     kakao-auth-url : https://kauth.kakao.com
     password : ENC(rv8Qph3VurYZgBfvLo33SUPPosUgUzub)
+

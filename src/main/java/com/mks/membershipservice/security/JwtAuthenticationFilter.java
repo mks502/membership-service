@@ -1,6 +1,10 @@
 package com.mks.membershipservice.security;
 
+import com.mks.membershipservice.exception.BadRequestException;
+import com.mks.membershipservice.exception.UnauthorizedException;
+import com.mks.membershipservice.util.RedisUtil;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -13,18 +17,31 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 
 @RequiredArgsConstructor
+@Slf4j
 public class JwtAuthenticationFilter extends GenericFilterBean {
     private final JwtTokenProvider jwtTokenProvider;
+    private final RedisUtil redisUtil;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         String token = jwtTokenProvider.resolveToken((HttpServletRequest) request);
 
-        //유효한 토큰인지 확인
-        if(token != null && jwtTokenProvider.isValidateToken(token)){
+        if(isLogoutToken(token)){
+            throw new UnauthorizedException("로그아웃 된 토큰입니다.");
+        }
+        
+        if(isValidateToken(token)){
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
         chain.doFilter(request,response);
+    }
+
+    private boolean isLogoutToken(String token){
+        return token != null && redisUtil.getData(token) != null;
+    }
+
+    private boolean isValidateToken(String token){
+        return token != null && jwtTokenProvider.isValidateToken(token);
     }
 }

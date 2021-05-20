@@ -16,4 +16,7 @@ public class JwtProperties {
 
     @NotEmpty
     private String secretKey;
+
+    @NotEmpty
+    private long logoutTokenExpirationTime;
 }
