@@ -43,6 +43,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                         "/swagger-ui.html",
                         "/webjars/**").permitAll()
 
+                .antMatchers("/health").permitAll()
                 .antMatchers("/api/members").permitAll()    //회원가입
                 .antMatchers("/api/login").permitAll()      //로그인
                 .antMatchers("/oauth/**").permitAll()       //oauth 로그인 인증 필요 x

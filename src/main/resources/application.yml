@@ -41,4 +41,11 @@ oauth:
     redirect-url : ENC(EA4SxFO3/bGW5FHQMSXflASYduRA5wfVlaG1eu4nAz27VXNoGgup1Q7rOawlUrXF)
     kakao-auth-url : https://kauth.kakao.com
     password : ENC(rv8Qph3VurYZgBfvLo33SUPPosUgUzub)
-
+eureka:
+  instance:
+    hostname: localhost                   #윈도우 경우 필요
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
