@@ -2,6 +2,10 @@ server:
   port: 8080
 
 spring:
+  profiles:
+    active: dev
+  config:
+    use-legacy-processing: true
   application:
     name: membership-service
   h2:
@@ -10,11 +14,6 @@ spring:
       settings:
         web-allow-others: true
       path: /h2-console
-  datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:testdb
-    username: sa
-    password:
   jpa:
     generate-ddl: true
     show-sql: true
@@ -41,4 +40,28 @@ oauth:
     redirect-url : ENC(EA4SxFO3/bGW5FHQMSXflASYduRA5wfVlaG1eu4nAz27VXNoGgup1Q7rOawlUrXF)
     kakao-auth-url : https://kauth.kakao.com
     password : ENC(rv8Qph3VurYZgBfvLo33SUPPosUgUzub)
+eureka:
+  instance:
+    hostname: localhost                   #윈도우 경우 필요
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8761/eureka
 
+---
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:testdb
+    username: sa
+    password:
+
+---
+spring:
+  profiles: prod
+  datasource:
+    url: jdbc:mysql://database-kyuseok.cp43k9flv4ax.ap-northeast-2.rds.amazonaws.com/membership?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: rbtjrelql
