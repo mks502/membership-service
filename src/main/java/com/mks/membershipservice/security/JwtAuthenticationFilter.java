@@ -29,7 +29,7 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         if(isLogoutToken(token)){
             throw new UnauthorizedException("로그아웃 된 토큰입니다.");
         }
-        
+
         if(isValidateToken(token)){
             Authentication authentication = jwtTokenProvider.getAuthentication(token);
             SecurityContextHolder.getContext().setAuthentication(authentication);
