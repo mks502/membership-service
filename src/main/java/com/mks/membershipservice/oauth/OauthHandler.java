@@ -1,29 +1,24 @@
 package com.mks.membershipservice.oauth;
 
-import com.mks.membershipservice.adapter.KakaoAdapter;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
+@Slf4j
 public class OauthHandler {
-    private final OauthService oauthService;
-    private final KakaoAdapter kakaoAdapter;
 
-    @GetMapping("/login/kakao")
-    public ResponseEntity kakaoLoginHandler(String code) throws Exception {
-        String kakaoAccessToken = getKakaoAccessToken(code);
-        return ResponseEntity.status(HttpStatus.OK).body(oauthService.getOrCreateMember(kakaoAccessToken));
-    }
+    private final OauthServiceFactory oauthServiceFactory;
 
-    private String getKakaoAccessToken(String code) throws Exception {
-        String kakaoAccessToken = kakaoAdapter.getAccessToken(code);
-        return kakaoAccessToken;
+    @GetMapping("/login/{provider}")
+    public ResponseEntity oauthLoginHandler(@RequestParam(value = "code") String code, @PathVariable String provider) throws Exception {
+        log.info("oauth 로그인 성공시 인증완료 코드값 : "+ code);
+        OauthType oauthType = OauthType.valueOf(provider.toUpperCase());
+        return ResponseEntity.status(HttpStatus.OK).body(oauthServiceFactory.getOauthService(oauthType).getOrCreateMember(code));
     }
 
 }

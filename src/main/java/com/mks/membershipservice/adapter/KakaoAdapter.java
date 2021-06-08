@@ -24,7 +24,7 @@ public class KakaoAdapter {
 	private final KakaoProperties kakaoProperties;
 
     // 카카오 로그인을 통해 인가받은 코드로 access_token을 발급 받는다.
-    public String getAccessToken(String code) throws Exception {
+    public String getAccessToken(String authorizationCode) {
         String accessToken = "";
         String restApiKey = kakaoProperties.getRestApiKey();
         String redirectURI = kakaoProperties.getRedirectUrl();
@@ -40,7 +40,7 @@ public class KakaoAdapter {
         parameters.set("grant_type", "authorization_code");
         parameters.set("client_id", restApiKey);
         parameters.set("redirect_uri", redirectURI);
-        parameters.set("code", code);
+        parameters.set("code", authorizationCode);
 
         HttpEntity<MultiValueMap<String, Object>> restRequest = new HttpEntity<>(parameters, headers);
         ResponseEntity<JSONObject> apiResponse = restTemplate.postForEntity(uri, restRequest, JSONObject.class);
