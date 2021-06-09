@@ -17,8 +17,13 @@ Spring Security + JWT 활용 (+ OAuth2.0)
 
 ### DB
 
-개발 환경 - H2 DB , Redis
-운영 환경 - AWS-RDS (mySQL) , Redis
+개발 환경
+- H2 DB
+- Redis
+
+운영 환경 
+- AWS-RDS (mySQL)
+- Redis
 
 
 ### API
@@ -96,6 +101,7 @@ MSA 기반 서비스를 위한 Spring Cloud 활용
 - 각 서비스 별로 SCALE IN/OUT 용이
 - 특정 서비스에 대한 확장성이 용이함
 - 특정 서비스의 장애가 전체 서비스로 확장 될 가능성이 적음
+- 각 서비스마다 알맞은 언어로 개발이 가능
 
 단점 :
 - 서비스 간 호출 시 API 통신을 해야하므로 그에 대한 비용 증가

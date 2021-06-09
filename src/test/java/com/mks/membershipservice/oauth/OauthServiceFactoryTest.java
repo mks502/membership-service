@@ -11,11 +11,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 class OauthServiceFactoryTest {
     @Autowired
-    OauthServiceFactory oauthServiceFactory;
+    private OauthServiceFactory oauthServiceFactory;
     @Autowired
-    KakaoOauthService kakaoOauthService;
+    private KakaoOauthService kakaoOauthService;
     @Autowired
-    NaverOauthService naverOauthService;
+    private NaverOauthService naverOauthService;
 
     @Test
     @DisplayName("oauth 타입에 따라 해당되는 oauth service 가져오기")
