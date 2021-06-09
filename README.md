@@ -34,7 +34,14 @@ Spring Security + JWT 활용 (+ OAuth2.0)
 ### OAuth2.0 Handler
 | Uri                                | description                |
 | ------------------------------------ | -------------------------- |
-| /oauth/login/kakao                    |카카오 로그인 시 처리해주는 핸들러 , 카카오 로그인을 통해 자동 회원가입 or 로그인이 된다. 성공시 token(JWT 토큰) 발급 |
+| /oauth/login/{provider}                    |각 소셜 로그인 시 처리해주는 핸들러 , 소셜 로그인을 통해 자동 회원가입 or 로그인이 된다. 성공시 token(JWT 토큰)을 발급 해줌 |
+
+provider는 소셜 로그인 제공자들 
+- kakao
+- naver
+
+ex) /oauth/login/kakao
+
 
 ### membership-service의 Swgger (API gateway를 통해서 연결)
 
