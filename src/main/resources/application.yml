@@ -24,6 +24,10 @@ spring:
   redis:
     host: localhost
     port: 6379
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
 
 token:
   expiration-time : 3600000
@@ -38,8 +42,15 @@ oauth:
   kakao:
     rest-api-key : ENC(nJ2zapDuZl2hWWwOL0X/7Z9NGRIbi2ja+LGQeD7rjkqmenvKIBdeoUMtw4bAjOOS)
     redirect-url : ENC(EA4SxFO3/bGW5FHQMSXflASYduRA5wfVlaG1eu4nAz27VXNoGgup1Q7rOawlUrXF)
-    kakao-auth-url : https://kauth.kakao.com
+    auth-url : https://kauth.kakao.com
     password : ENC(rv8Qph3VurYZgBfvLo33SUPPosUgUzub)
+  naver:
+    rest-api-key: ENC(JaSzrQp22mx+MhdhXpCVF6LRkp/bm2luSNiJT2FYI/Q=)
+    redirect-url: ENC(EgR5oDGO3zCRwzgEMcd2lpForBO5A2nZRU3+THGx5KKMljqlpemtTbctn1ADlQiJ)
+    auth-url: https://nid.naver.com
+    password: ENC(5TCiLaS4uEaaBh1nxgfZ+SDCffAAHhbr)
+    client-secret: ENC(ANII7TSnW/iVYEel6Q2QFzPhKx2zXqY4)
+
 eureka:
   instance:
     hostname: localhost                   #윈도우 경우 필요

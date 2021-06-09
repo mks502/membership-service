@@ -1,9 +1,9 @@
 package com.mks.membershipservice.oauth;
 
-import com.mks.membershipservice.adapter.KakaoAdapter;
-import com.mks.membershipservice.config.KakaoProperties;
-import com.mks.membershipservice.dto.KakaoUserDto;
+import com.mks.membershipservice.adapter.NaverAdapter;
+import com.mks.membershipservice.config.NaverProperties;
 import com.mks.membershipservice.dto.MemberDto;
+import com.mks.membershipservice.dto.NaverUserDto;
 import com.mks.membershipservice.dto.OauthDto;
 import com.mks.membershipservice.entity.Member;
 import com.mks.membershipservice.exception.UnauthorizedException;
@@ -20,36 +20,37 @@ import java.util.ArrayList;
 
 @Service
 @RequiredArgsConstructor
-public class KakaoOauthService implements OauthService {
-    private final KakaoAdapter kakaoAdapter;
+public class NaverOauthService implements OauthService {
+    private final NaverAdapter naverAdapter;
     private final MemberRepository memberRepository;
     private final ModelMapper mapper;
     private final JwtTokenProvider jwtTokenProvider;
     private final BCryptPasswordEncoder passwordEncoder;
-    private final KakaoProperties kakaoProperties;
+    private final NaverProperties naverProperties;
 
     @Override
     @Transactional
     public ResponseLogin getOrCreateMember(OauthDto oauthDto) throws Exception {
         String authorizationCode = oauthDto.getAuthorizationCode();
+
         String accessToken = getOauthAccessCode(authorizationCode);
 
-        final KakaoUserDto kakaoUserDto = kakaoAdapter.getUserInfo(accessToken);
+        final NaverUserDto naverUserDto = naverAdapter.getUserInfo(accessToken);
 
-        if (kakaoUserDto == null) {
-            throw new UnauthorizedException("Failed to get user info from kakao api");
+        if (naverUserDto == null) {
+            throw new UnauthorizedException("Failed to get user info from naver api");
         }
 
-        String kakaoId = kakaoUserDto.getId().toString();
-        String profileImgUrl = kakaoUserDto.getProfileImage();
-        String name = kakaoUserDto.getUserName();
+        String naverId = naverUserDto.getId().toString();
+        String profileImgUrl = naverUserDto.getProfileImage();
+        String name = naverUserDto.getUserName();
 
-        Member member = memberRepository.findOneByUsername(kakaoId).orElseGet(() -> {
+        Member member = memberRepository.findOneByUsername(naverId).orElseGet(() -> {
             MemberDto memberDto = new MemberDto();
-            memberDto.setUsername(kakaoId);
+            memberDto.setUsername(naverId);
             memberDto.setName(name);
-            memberDto.setPassword(kakaoProperties.getPassword());
-            memberDto.setEncryptedPassword(passwordEncoder.encode(kakaoProperties.getPassword()));
+            memberDto.setPassword(naverProperties.getPassword());
+            memberDto.setEncryptedPassword(passwordEncoder.encode(naverProperties.getPassword()));
 
             Member m = mapper.map(memberDto, Member.class);
             return memberRepository.save(m);
@@ -61,13 +62,13 @@ public class KakaoOauthService implements OauthService {
     }
 
     @Override
-    public String getOauthAccessCode(String authorizationCode) {
-        return kakaoAdapter.getAccessToken(authorizationCode);
+    public String getOauthAccessCode(String authorizationCode) throws Exception {
+        return naverAdapter.getAccessToken(authorizationCode);
     }
 
     @Override
     public OauthType getOauthType() {
-        return OauthType.KAKAO;
+        return OauthType.NAVER;
     }
 
 }

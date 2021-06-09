@@ -41,7 +41,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                         "/swagger-resources/**",
                         "/configuration/security",
                         "/swagger-ui.html",
-                        "/webjars/**").permitAll()
+                        "/webjars/**",
+                        "/login/naver").permitAll()
 
                 .antMatchers("/health").permitAll()
                 .antMatchers("/api/members").permitAll()    //회원가입

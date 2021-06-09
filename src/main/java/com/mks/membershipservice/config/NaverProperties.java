@@ -8,8 +8,8 @@ import javax.validation.constraints.NotEmpty;
 
 @Data
 @Component
-@ConfigurationProperties(prefix = "oauth.kakao")
-public class KakaoProperties {
+@ConfigurationProperties(prefix = "oauth.naver")
+public class NaverProperties {
 
     @NotEmpty
     private String restApiKey;
@@ -22,4 +22,7 @@ public class KakaoProperties {
 
     @NotEmpty
     private String password;
+
+    @NotEmpty
+    private String clientSecret;
 }

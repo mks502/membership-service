@@ -1,9 +1,10 @@
 package com.mks.membershipservice.oauth;
 
+import com.mks.membershipservice.dto.OauthDto;
 import com.mks.membershipservice.vo.ResponseLogin;
 
 public interface OauthService {
-    ResponseLogin getOrCreateMember(String authorizationCode) throws Exception;
+    ResponseLogin getOrCreateMember(OauthDto oauthDto) throws Exception;
 
     String getOauthAccessCode(String authorizationCode) throws Exception;
 
