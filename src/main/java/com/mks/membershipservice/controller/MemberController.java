@@ -2,7 +2,7 @@ package com.mks.membershipservice.controller;
 
 import com.mks.membershipservice.dto.MemberDto;
 import com.mks.membershipservice.service.MemberService;
-import com.mks.membershipservice.vo.CreateMemberRequest;
+import com.mks.membershipservice.dto.CreateMemberRequest;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;

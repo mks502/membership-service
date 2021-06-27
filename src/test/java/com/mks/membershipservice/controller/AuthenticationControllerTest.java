@@ -3,7 +3,7 @@ package com.mks.membershipservice.controller;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mks.membershipservice.dto.MemberDto;
 import com.mks.membershipservice.service.MemberService;
-import com.mks.membershipservice.vo.RequestLogin;
+import com.mks.membershipservice.dto.RequestLogin;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

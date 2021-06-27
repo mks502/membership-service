@@ -9,7 +9,7 @@ import com.mks.membershipservice.entity.Member;
 import com.mks.membershipservice.exception.UnauthorizedException;
 import com.mks.membershipservice.repository.MemberRepository;
 import com.mks.membershipservice.security.JwtTokenProvider;
-import com.mks.membershipservice.vo.ResponseLogin;
+import com.mks.membershipservice.dto.ResponseLogin;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;

@@ -1,4 +1,4 @@
-package com.mks.membershipservice.vo;
+package com.mks.membershipservice.dto;
 
 import lombok.Data;
 

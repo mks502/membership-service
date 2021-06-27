@@ -1,7 +1,7 @@
 package com.mks.membershipservice.oauth;
 
 import com.mks.membershipservice.dto.OauthDto;
-import com.mks.membershipservice.vo.ResponseLogin;
+import com.mks.membershipservice.dto.ResponseLogin;
 
 public interface OauthService {
     ResponseLogin getOrCreateMember(OauthDto oauthDto) throws Exception;

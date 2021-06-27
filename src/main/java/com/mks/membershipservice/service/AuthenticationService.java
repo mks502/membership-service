@@ -5,7 +5,7 @@ import com.mks.membershipservice.dto.MemberDto;
 import com.mks.membershipservice.exception.BadRequestException;
 import com.mks.membershipservice.security.JwtTokenProvider;
 import com.mks.membershipservice.util.RedisUtil;
-import com.mks.membershipservice.vo.ResponseLogin;
+import com.mks.membershipservice.dto.ResponseLogin;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
