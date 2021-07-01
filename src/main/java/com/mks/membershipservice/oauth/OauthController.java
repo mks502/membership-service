@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/oauth")
 @RequiredArgsConstructor
 @Slf4j
-public class OauthHandler {
+public class OauthController {
 
     private final OauthServiceFactory oauthServiceFactory;
 
