@@ -50,7 +50,7 @@ ex) /oauth/login/kakao
 
 ### membership-service의 Swgger (API gateway를 통해서 연결)
 
-http://ec2-54-180-154-7.ap-northeast-2.compute.amazonaws.com:8000/membership-service/swagger-ui.html#
+...
 
 ### 서비스 Architecture
 
